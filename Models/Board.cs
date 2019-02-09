@@ -11,7 +11,7 @@ namespace Models
     /// </summary>
     public class Board
     {
-        public BoardDimension BoardDimesion { get; set; } 
+        public BoardDimension BoardDimension { get; set; } 
 
         public List<Piece> WhitePieces { get; set; }        
         public List<Piece> BlackPieces { get; set; }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq.Expressions;
 using System.Xml.Linq;
 using Models;
@@ -19,26 +20,30 @@ namespace ChessLogic
         /// <returns></returns>
         public Game BoardSetup(Game game)
         {
-            var peice = new Piece
-            {
-                PieceName = PieceName.Rook,
-                CurrentPosition = new Tuple<int, int>(8,8),
-                StartingPosition = new Tuple<int, int>(8,8)
-            };
             game.Board = new Board();
+            // TODO: Store this in database
+            game.Board.BoardDimension = new BoardDimension();
             game.Board.BlackPieces = new List<Piece>{
                 new Piece
                 {
+                    ID = new Guid(),
                     PieceName = PieceName.Rook,
-                    CurrentPosition = new Tuple<int, int>(8,0),
-                    StartingPosition = new Tuple<int, int>(8,0)
+                    Position = new List<Tuple<int, int>>()
+                    { 
+                        new Tuple<int, int>(8,8)
+                    }
                 },
                 new Piece
                 {
+                    ID = new Guid(),
                     PieceName = PieceName.Rook,
-                    CurrentPosition = new Tuple<int, int>(8,0),
-                    StartingPosition = new Tuple<int, int>(8,0)
-                }};
+                    Position = new List<Tuple<int, int>>()
+                    { 
+                        new Tuple<int, int>(8,0)
+                    }
+                }
+                
+            };
 
            /* game.Board.WhitePieces.Add(new Piece
             {
